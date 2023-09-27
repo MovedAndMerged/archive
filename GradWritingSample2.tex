@@ -1,0 +1,580 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[margin=1.2in]{geometry}  
+\geometry{letterpaper} 
+\usepackage{graphicx}				
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+\usepackage{enumerate}
+\usepackage{qtree}
+\usepackage{tabto}
+\usepackage{tree-dvips}
+\usepackage{gb4e}
+\usepackage{times}
+
+\selectcolormodel{gray}
+\definecolor{gblu}{HTML}{A0A0A0}
+\definecolor{lgr}{HTML}{CBCBCB}
+
+\title{Final: VP-Ellipsis with Auxiliaries (\textit{writing-sample edit})}
+\author{Jackson Confer\\Original version for LING 141: Ellipsis, Fall 2020\\\textit{Jorge Hankamer}}
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+
+In the basic model of verb-phrase ellipsis (VPE) derived in LING 141, VPs can delete under identity when complement to a licensing head, either T or Neg. This model works exceptionally well for most cases of VPE, including cases where a V\textsubscript{\textsc{[+aux]}} has moved to T. However, it has trouble predicting the distribution of VPE in cases with multiple nested auxiliary verbs, where VPE can be licensed lower in the structure at an unmoved V\textsubscript{\textsc{[+aux]}}.  According to data from an acceptability study, different speakers also have vastly different preferences as to which permutations of such multi-site sentences are preferred, or even grammatical, necessitating a flexible model that can capture variation. To account for these observations, I propose: (i) a reevaluation of the class-derived VPE model wherein V\textsubscript{\textsc{[+aux]}} is added as a licensing head in its own right; (ii) that a hierarchical feature \textsc{Prominence} exists to influence which head is most likely to license VPE when presented with competing options; (iii) and a necessary reevaluation of derivational step ordering. Cumulatively, these proposals give a more detailed account of VPE than we had time to develop in LING 141, as well as a mechanical explanation for variation in speaker judgments.
+
+\section{VP-Ellipsis}
+
+The model presented in this paper mainly relies on the model of VPE we devised throughout the first weeks of class; \S\ref{ass} briefly describes basic assumptions, \S\ref{SecClass} describes the class VPE account and what assumptions need to change, and \S\ref{SecAuxProb} will introduce the phenomenon of concern for this investigation concerning V\textsubscript{\textsc{[+aux]}} heads.
+
+\subsection{Framework \& Assumptions}\label{ass}
+
+The framework of LING 141's VPE model in Fall 2020 makes some basic assumptions based on the syntactic theory students were expected to be familiar with up until that point. It avoids Minimalist assumptions and does not have a Y-model with phonological form and logical form splitting off from surface structure; therefore, semantic interpretation is assumed to happen at deep structure. It presumes VP-internal subject generation, as well as binary branching for all nodes except in coordinate structures, which have trinary branching; coordinate structures have the form presented in (\ref{coors}), where \textit{j} is a non-phrase-projecting element that links two XPs of the same category:
+
+\begin{exe}
+\ex\label{coors} XP $\rightarrow$ XP \textit{j} XP
+\end{exe}
+
+This framework does not include \textit{v}P; although a valuable concept in many analyses, since this investigation primarily explores the behavior of ellipsis deeper in the structure than most proposals for a \textit{v}P would appear, I felt it unnecessary to retrofit into the theory at the time of writing. Additionally, the framework of this particular investigation assumes that all modals are Vs which later move to T, rather than T heads themselves---this is important to account for relevant observations in \S\ref{SecAccAux}. Beyond this generalization, the exact nature of modals and their interaction with T or characteristics such as mood or aspect are left undeveloped since these processes are not the direct object of study here.
+
+\subsection{Class Account}\label{SecClass}
+
+The analysis presented in this paper will use the class discussion of VPE as its starting point. However, in our limited time, we never covered scenarios such as the one presented in this paper and thus did not need a model tailored to account for it. In our discussion of how VPE is licensed, we settled on having two licensing heads: T and Neg. For affirmative sentences, the ellipsis occurs on the node sister to T, while in negative sentences, the ellipsis occurs next to Neg. Examples of these are given in (\ref{A}) and (\ref{B}) respectively.\footnote{A note on conventions, trees throughout this paper will omit particles such as \textit{too} and \textit{either} for simplicity's sake. Additionally, I will periodically use frames to show what portion of the structure is being elided.} 
+
+\begin{exe}
+\ex\samepage \label{A}	\begin{xlist}
+	\ex I like burgers and my friend likes burgers too.
+	\ex I like burgers and my friend does too.
+	\ex\scriptsize
+	
+	\Tree
+	[.TP
+		[.TP
+			\qroof{I}.DP
+			[.T\1
+				[.T\\\textsc{pres} ]
+				[.VP
+					[.V\\like ]
+					\qroof{burgers}.DP
+				]
+			]
+		]!\qsetw{2in}
+		[.\textit{j}\\and ]
+		[.TP
+			\qroof{my friend}.DP	
+			[.T\1
+				[.T\\(does) ]
+				[.VP
+					[.V\\like ]
+					\qroof{burgers}.DP
+				] !{\qframesubtree}
+			]
+		] 
+	]
+	\end{xlist}\normalsize
+	
+\ex\label{B}	\begin{xlist}
+	\ex I don't like burgers and my friend doesn't like burgers either.
+	\ex I don't like burgers and my friend doesn't either.
+	\ex \scriptsize
+	
+	\Tree
+	[.TP
+		[.TP
+			\qroof{I}.DP
+			[.T\1
+				[.T\\\textsc{pres} ]
+				[.NegP
+					[.Neg\\not ]
+					[.VP
+						[.V\\like ]
+						\qroof{burgers}.DP
+					]
+				]
+			]
+		]!\qsetw{2in}
+		[.\textit{j}\\and ]
+		[.TP
+			\qroof{my friend}.DP	
+			[.T\1
+				[.T\\(does) ]
+				[.NegP
+					[.Neg\\not ]
+					[.VP
+						[.V\\like ]
+						\qroof{burgers}.DP
+					] !{\qframesubtree}
+				]
+			]
+		] 
+	]
+	\end{xlist}
+\end{exe}
+\normalsize
+
+In class, we established that since sentences that have undergone VPE retain their T after ellipsis has occurred, auxiliary verbs that move to T remain in the sentence as a stranded node from the elided content. This would entail a relative transformation ordering as follows, where auxiliary V-to-T movement occurs before the ellipsis:
+
+\begin{exe}
+\renewcommand{\labelenumi}{\Roman{enumi}}
+\ex\label{ord1}	\begin{enumerate}
+	\item \textsc{V-to-T Movement}
+	\item \textsc{Verb-Phrase Ellipsis}
+	\end{enumerate}
+\end{exe}
+
+With a V\textsubscript{\textsc{[+aux]}} already in T, this explains why such a V can survive ellipsis, even if its respective VP gets deleted in the process. This proposal, however, would only account for sentences with a single remnant auxiliary, one of many possible environments for VPE to occur in. While this analysis simplifies the account appropriately for the tasks given in LING 141, it's broadly known to the literature and easily observable that V\textsubscript{\textsc{[+aux]}} can also act as a licensing head when they sit unmoved lower in the structure. 
+
+I will be referring to the outcome of VPE at a particular site when given multiple possibilities as a \textit{permutation} of VPE, including the unelided form. Thus, at minimum a sentence which can undergo VPE has at least two permutations: [+VPE] and [-VPE]. Sentences with nested auxiliary verbs have more than 2 permutations. In order to unify accounts for each licensing head while also modeling predictable interactions between each, I will later propose that the derivational step order can actually be the the inverse of what's presented in (\ref{ord1}), having ellipsis occur before V-to-T movement; the details of this will be covered more in-depth in Section \ref{SecOrder}.
+
+
+\subsection{Problems with Auxiliaries}\label{SecAuxProb}
+
+As mentioned in the previous section, our class model of VPE stood less robust in its finer details in the interest of exploring more types of ellipsis over the quarter. Take (\ref{C}) for example, with four valid permutations for the underlying sentence in (\ref{C1}), including (\ref{C1}) itself; even though native English speakers will have varying preferences and degrees of comfort with each permutation, all are broadly grammatical to a majority of speakers (for evidence of this, see \S\ref{Accs}):
+\pagebreak
+\begin{exe}
+\ex\label{C}\begin{xlist}
+	\ex\label{C1} I could have been playing with anything that Harvey could have been playing with.
+	\ex\label{C2} I could have been playing with anything that Harvey could have been.
+	\ex\label{C3} I could have been playing with anything that Harvey could have.
+	\ex\label{C4} I could have been playing with anything that Harvey could.
+	\end{xlist}
+\end{exe}
+
+With the state of where the paradigm developed in class left off, we can only account for (\ref{C1}) and (\ref{C4}). We can derive (\ref{C1}) by doing no VPE and derive (\ref{C4}) by eliding next to T after V-to-T movement, leaving \textit{could} behind. However, we see a more modular pattern in reality, where remnants of \textit{could have} and \textit{could have been} are each valid permutations of VPE to most speakers. Thus, for an account of English VPE to be complete, this variation must be integrated into the broader explanation of anaphora, including any variation in acceptability. 
+
+
+\section{Acceptability Study}\label{Accs}
+
+Finding data on this was very difficult, so I decided to gather my own data to analyze. As a native English speaker I had my own intuition that all sentences presented in (\ref{C}) were grammatical, but I also felt myself preferring some permutations over others and didn't want to rely on my own judgment. This study was not a rigorously designed study and I did not conduct a thorough statistical analysis on the data, but with 42 participants to provide a large enough sample size to minimize most effects of chance, the resulting trends show individual preferences for different licensing heads.
+
+\subsection{Methods \& Participants}
+
+I posted a link to a survey on my own Facebook timeline and a few student-run academic Discord servers, as well as asking some friends and family to share it around. I would then compare responses to each question and see how the same ellipsis template compared in different situations. I did not include a field for where the participant was from, however respondents from these environments would overwhelmingly be from various parts of the western coast of the United States, especially Northern California. There were 42 participants in total, 76.8\% of which were between the ages of 18-30, while the last quarter was mostly participants aged 43 and above, half of whom were over age 55.
+
+My hypothesis was when given all permutations of VPE in the style of (\ref{C2})-(\ref{C4}), participants would find them all grammatical, and would be split roughly evenly as to which they prefer. I did not run tests for statistical significance.
+
+\subsection{Design}
+
+Over seven sets, I asked pairs of questions where participants were presented with a set of VPE permutations of a given stacked-auxiliary structure. Per set, the first question asked participants to select which permutations they found grammatical at all; the second question asked participants to select which permutations they preferred the most out of the first four items (all based on linearly-increasing ellipsis, rather than omitting an intermediate antecedent auxiliary like permutations (v)--(vi) in (\ref{exmplq}) or the mood change in Question 7). Each question was based on the corresponding sentence from (\ref{E}), while the non-elided permutations presented in (\ref{E}) themselves were not given as possible answers to any question.
+
+\begin{exe}
+\ex\label{E} Question:
+\begin{enumerate}
+\item I could have played with anything that Harvey could have played with.
+\item I could have been playing with anything that Harvey could have been playing with.
+\item I would have played with anything that Harvey would have played with.
+\item I would have been playing with anything that Harvey would have been playing with. 
+\item I have been playing with everything that Harvey has been playing with.
+\item I could have been playing with the dog and Harvey could have been playing with the dog too.
+\item I couldn't have been playing with the dog and Harvey couldn't have been playing with the dog *too.
+\end{enumerate}
+\end{exe}
+
+Question 1 and 2 investigate the modal \textit{could}. Questions 3 and 4 assess the same phenomena with the modal \textit{would} to see if different modals pattern differently. Question 5 gives an example without a modal, and Question 6 gives an example of a coordinate structure. I made a large error in the wording of Question 7's permutations, meant to assess negation; see \S\ref{Rslt} for more an explanation of the error and the aftermath, but as a result Question 7's data were left unanalyzed.
+
+I limited the auxiliaries to modals, \textit{have}, and progressive \textit{be} for ease of data comparison. Each option contained a permutation of VPE on a sentence with multiple auxiliaries. Some permutations intentionally did not have identical auxiliaries between clauses within the sentence, such as Option (2A.\ref{D7}) in example (\ref{D}); I included these as other options on the off chance that they would correlate in some major way with how participants would handle those in Options (2A.i)-(2A.iv), however, this yielded no real comparable data due to design oversight. Some sets only included permutations (i)-(iv) due to incongruence in their structure; this was also a design oversight, and I ended up not using much of the data from questions that included (v)-(vii) type-sentences since I didn't control for them well enough:
+
+\begin{exe}
+\ex\samepage\label{exmplq}\label{D} 	\begin{xlist}
+	\ex Question 2A: Check all of the following sentences that sound acceptable to you:\begin{enumerate}[i]
+	\item I could have been playing with anything that Harvey could have been.
+	\item I could have been playing with anything that Harvey could have.
+	\item I could have been playing with anything that Harvey could.
+	\item I could have been playing with anything that Harvey.
+	\item I could have been playing with anything that Harvey could be.
+	\item I could have been playing with anything that Harvey had been.
+	\item\label{D7} I could have been playing with anything that Harvey has been.
+	\end{enumerate}
+	\ex\samepage Question 2B: Which of these do you prefer the most?\begin{enumerate}[i]
+	\item I could have been playing with anything that Harvey could have been.
+	\item I could have been playing with anything that Harvey could have.
+	\item I could have been playing with anything that Harvey could.
+	\item Nome of these sound okay to me.
+	\end{enumerate}
+	\end{xlist}
+\end{exe}
+
+\subsection{Results}\label{Rslt}
+
+Figure 1 gives condensed response data for Questions 1-6 concerning permutations with modals, describing what percent of participants judged a certain permutation as grammatical and what percentage preferred each option.  Question 5 did not use modals, and thus to keep this table tidy, I did not add rows for its options; I will describe the data from Question 5 later on, but the data on modal-less examples was too lacking to do any real analysis.
+\small
+\begin{center}
+\begin{tabular}{|r|c|c|c|c|c|c|}
+\multicolumn{7}{r}{Figure 1}\\
+\hline\rowcolor{gblu}
+	&Q1
+ 	&Q2
+	&Q3
+	&Q4
+	&Q5
+	&Q6\\
+\hline
+\hline
+\rowcolor{lgr}None grammatical\footnotemark (\%) 
+	&9.5 
+	&4.8 
+	&4.9 
+	&14.3 
+	&9.8
+	&2.4\\
+\hline\hline
+\textsc{Modal} grammatical (\%) 
+	&83.3
+	&71.4
+	&67.5
+	&60
+	&-
+	&31.7  \\
+\hline
+\rowcolor{lgr}\textsc{Modal} preferred (\%)
+	&38.1
+	&21.4
+	&29.3
+	&26.2
+	&-
+	&0   \\
+\hline\hline\rowcolor{gblu}
+	&Q1
+	&Q2
+	&Q3
+	&Q4
+	&Q5
+	&Q6\\
+\hline\hline
+\rowcolor{lgr}\textsc{Modal} + \textit{have} grammatical (\%)
+	&78.6
+	&78.6
+	&82.5&
+	75
+	&-
+	&87.8\\
+\hline
+\textsc{Modal} + \textit{have} preferred (\%)
+	&52.4
+	&42.9
+	&65.9
+	&45.2
+	&-
+	&54.8 \\
+\hline\hline\rowcolor{gblu}
+	&Q1
+	&Q2
+	&Q3
+	&Q4
+	&Q5
+	&Q6\\
+\hline\hline
+\rowcolor{lgr}\textsc{Modal} + \textit{have} + \textit{be} grammatical (\%)
+	&-
+	&50
+	&- 
+	&55
+	&- 
+	&73.2\\
+\hline
+\textsc{Modal} + \textit{have} + \textit{be} preferred (\%) 
+	&- 
+	&31
+	&-
+	&14.3
+	&-
+	&42.9  \\
+\hline
+\end{tabular}
+\end{center}
+\normalsize
+\footnotetext{These numbers come from the second question in each pair where the participant had a ``None of these sound okay to me" option.}
+
+\paragraph{Tendencies for Individual Questions}
+In each set, \textsc{Modal}+\textit{have} was the most preferred option across all questions and age demographics, regardless of whether or not \textit{be} was present. It had the highest preference rate in every question, and was the most accepted option every time except for Question 1. In concert with the fact that the majority would accept all permutations, this indicates that participants generally wanted ellipsis to occur below T for cases where an auxiliary is present.
+
+Question 6 presents an interesting scenario, where the \textsc{Modal}-only option was widely regarded as ungrammatical and of the 31.7\% who did accept it, none preferred it. Since this was the only example with coordination I had left after Question 7 was botched, I will mainly focus on cases where the ellipsis occurs in a CP embedded in the same structure its antecedent  such as the cases presented in Questions 1-4. Another paper for another time, I would very much like to revisit this with more data taken in a better survey.
+
+In typing out Question 7, I forgot to swap \textit{too} with \textit{either}, and many participants noted that this swap would have made the difference; 33\% of participants did not find any option in Question 7 grammatical, considerably higher than any other question. For this reason, I have not included the data for Question 7 in Figure 1. Since the data it brought shed more light on the the grammatical forms of particles than it did ellipsis patterns, it is extraneous to this investigation. It could possibly be useful in an investigation about such particles, but would need to be re-done under different conditions with better comparison phrases.
+
+\paragraph{Tendencies Across the Survey}
+Across the board, older participants were more likely to not accept a permutation only having the main verb elided, usually preferring a single auxiliary verb be elided with it when available. While some in the 18-30 year-old category also did not prefer these (or find them grammatical), they were still more likely to select minimally-elided options. All around, there was extreme variation as to which types of permutation were acceptable, even when looking at a single participant's responses.
+
+\subsection{Discussion}
+
+Overall, these data provide a clear indication that while not everybody agrees on which permutations are preferred or even allowed, there are both variation in responses and a substantial amount of people subscribing to each option (excluding situations with coordinate structures). The variety in the data also indicates that grammaticality and preference is highly idiolectal; for Question 2A alone, there were 17 different permutations\footnote{Conventional use of the word, not the technical meaning defined earlier.} of the survey's options, with the highest-scoring arrangement represented only by 6 out of 42 participants. This stands against the hypothesis that there would be an even distribution of preference.
+
+Since the participants members of the same overarching speech community speaking variations of a shared language, they would logically be operating off of the same framework in the deep structure no matter what their preferred outputs are. The mechanics which allow this flexibility in preference from speaker-to-speaker must in turn allow for for flexibility in interpretation from speaker-to-speaker or the broader use of language could not function; in other words, speakers must be able to interpret non-preferred (or to them, ungrammatical) VPE permutations. Thus, we have established the minimum requirements for a basic working model: create a unified account of VPE with and without auxiliaries, for all permutations, which explain why how speakers can prefer a given distribution while having the capability to interpret all (although maybe not why).
+
+\subsubsection{Gaps in the Data}
+
+Due to both underrepresentation in the survey and botched question design, there are notable gaps in the survey and sentence forms we have usable judgments for. The most glaring gap is sentences concerning negation, which experienced the brunt of both of these errors. Additionally, I neglected to include sentences such as (\ref{pzdd}) which would explicitly test with what frequency VPE could occur before V-to-T movement, as evidenced by the ellipsis site occurring at a \textit{do}-supported T.
+
+\begin{exe}
+\ex\label{pzdd} I could have been playing with anything that Harvey did.
+\end{exe}
+
+In lieu of data from a large survey, I had to rely on my own intuition as well as the judgements of six native-speaker peers that were willing to lend a hand on both negation and (\ref{pzdd})-type sentences, gathered in an informal acceptability task. For what it's worth, there was no variation in judgments from speaker to speaker out of the six. As a result of this lower-confidence data, my claims about negation and V-to-T movement in the model developed in \S\ref{SecAccAux} probably deserve the most critical lens of any part of the account. However, the fact that multiple speakers found (\ref{pzdd}) grammatical means that it still ought to be accounted for in a broader theory of English syntax for the time being, even if those structures do not prove to be available to all speakers in a wider survey. The question now should be more concerned with the real distribution of judgments are in a broader sample rather than whether or not speakers can access the ellipsis at all, best accomplished by a re-designed and re-ran experiment.
+
+\subsubsection{Proposed Re-Design}
+
+There were enough gaps in procedure for this survey with enough promising trends in the data that it warrants a second, more extensive follow-up investigation. While there were enough participants that the data probably do represent a real tendency nonetheless, a better study is needed to securely discern the actual nature of the distribution. I focused too much on trying to get comparative data on certain patterns to the extent that I neglected others, while also neglecting to make the survey participant-friendly; many respondents noted that the layout was a bit overwhelming. Direct follow-up investigations could:
+
+\begin{exe}
+\ex	\begin{enumerate}
+	\item Explicitly test how frequently VPE can occur before V-to-T movement, providing ellipsis sites at T with \textit{do}-support. This could also be turned into a general investigation into how having a different VPE-licensing head than the complement head to the antecedent affects licensing patterns---at the moment, though, understanding derivational order is more important.
+	\item Explore situations where the antecedent has undergone its own case of VPE.
+	\item Better test how a different arrangement of auxiliaries between antecedent and ellipsis site affect licensing patterns. 
+	\item Better test for how different frames for the ellipsis (embedding vs. coordination, etc.) affect licensing patterns.
+	\end{enumerate}
+\end{exe}
+
+Whatever the exact mechanics, motivations, and broader tendencies of VPE are, there is still enough to propose a basic explanation that hopefully survives the insight of future data.
+
+\section{Accounting for Auxiliaries}\label{SecAccAux}
+
+To expand the class model to fit the flexibility seen in the acceptability survey requires some major theoretical revision. To account for the empirical evidence, the model must allow flexibility without giving complete freedom. There must be a way to capture the order while still allowing for multiple possible licensing heads to co-exist. The first alteration, detailed in Section \ref{SecAlpha}, is the introduction of a non-binary, hierarchical feature \textsc{Prominence} (\textsc{Prom}) carried by licensing heads, where each value carries a different level of prominence. Next, in Section \ref{SecOrder}, I will argue that while maybe not preferable, VPE can occur before V-to-T movement in the derivation of a sentence, with room for this to be a universal ordering pending additional evidence. Finally, in Section \ref{SecUni}, I will demonstrate how this account can consistently produce the desired results for both auxiliary-present and auxiliary-absent VPE targets.
+
+\subsection{Licensing and [$\pm$\textsc{Prom}-$\alpha$]}\label{SecAlpha}
+
+While \S\ref{SecAuxProb} already posited V\textsubscript{\textsc{[+aux]}} as an additional licensing head to what exists in the class model, more is needed to explain the uneven distribution from the survey. To accomplish this, I've proposed that there exists a feature on licensing heads which assigns it a difference level of prominence while the process is looking for a head to elide at called [$\pm$\textsc{Prominence}-$\alpha$] ([$\pm$\textsc{Prom}-$\alpha$]).
+
+\paragraph{Licensing Patterns} With V\textsubscript{\textsc{[+aux]}} being included as a licensing head as of \S\ref{SecClass}, this brings the total set of VPE licensing heads to \{T, Neg, V\textsubscript{\textsc{[+aux]}}\}. The results of the survey indicate that these heads can co-exist in the same sentences and an individual speaker can accept ellipsis at multiple sites as grammatical. However, the data indicate that a hierarchy of some sort is present between heads, where different heads are more comfortable for licensing ellipsis.
+
+Neg consistently overrides T as the licensing head whenever relevant. A V\textsubscript{\textsc{[+aux]}} then has the ability to override either T or Neg as the licensing head, depending on whether or not a Neg is relevant. Since all of these heads can license the same form of ellipsis, it would make sense that they all shared a feature that allowed them to do it. \textsc{Prom}-values allow for competition between licensing heads, resulting in variation. Additionally, the cross-question preference for ellipsis at \textit{have} in the data indicates that the generalization is not that the lower the VPE can occur the better, but that \textit{have} ought to have the highest priority on average even though it can still select another auxiliary verb. This leaves an outstanding question of whether or not VPE is truly the selection of a VP, or if it just so happens that the interactions between licensing heads always elides a VP; while its easy to posit one explanation over another, the data here don't have much to say on the matter, although it would probably matter in further analysis.
+
+\begin{exe}
+\ex\samepage\label{F}\begin{xlist}
+	\ex I could have been playing with anything that Harvey could (have) (been) (playing with). 
+	\ex\footnotesize
+	\Tree
+	[....
+		[.CP
+			[.C\\that ]
+			[.TP
+				\qroof{Harvey}.DP
+				[.T\1
+					[.T
+						[.V\textsubscript{\textsc{[+aux]}}\\\node{B}{can} ]
+						[.T\\\textsc{past} ]
+					]
+					[.VP
+						[.\node{A}{$t_1$} ]
+						[.VP
+							[.V\textsubscript{\textsc{[+aux]}}\\have ]
+							[.VP
+								[.V\textsubscript{\textsc{[+aux]}}\\be ]
+								[.VP
+									[.V\\play ]
+									[.PP
+										[.P\\with ]
+										[.... ]
+									]
+								] !{\qframesubtree}
+							] !{\qframesubtree}
+						] !{\qframesubtree}
+					]
+				]
+			]
+		]
+	]	
+	\anodecurve[b]{A}[b]{B}{.5in}				
+	\end{xlist}
+\end{exe}
+\normalsize
+\bigskip
+
+\paragraph{\textsc{Prominence}} In order to account for the variation in the data, I propose a feature [$\pm$\textsc{Prominence}-$\alpha$] which is what allows licensing heads to license. Rather than simply being assigned a + or - value for the feature, [+\textsc{Prom}-$\alpha$] takes a non-negative integer value (0, 1, 2... etc) for $\alpha$ to indicate the relative priority of that head: the higher the number, the higher the effective prominence the head has as a candidate in licensing ellipsis. Meanwhile, [-\textsc{Prom}-$\alpha$] takes no such value, as it is the absence of the feature entirely. The tiered nature of \textsc{Prominence} is then what drives the optionality and flexibility of VPE. These features can vary at the idiolectal level, with the ranking presented in (\ref{hier}) representative of on a hypothetical, `average' speaker based on the data in Figure 1:
+
+\begin{exe}
+\ex\label{hier} \textbf{Average \textsc{Prominence} levels as indicated by acceptability study:}\samepage	\begin{itemize}
+	\item \textsc{+Prom-4}\tabto{1in}-\hspace{.5cm}V\textsubscript{\textsc{[+aux]}} - \textit{have} \tabto{3in}\textbf{\textit{Highest Priority}}
+	\item \textsc{+Prom-3}\tabto{1in}-\hspace{.5cm}V\textsubscript{\textsc{[+aux]}} - \textsc{modal}
+	\item \textsc{+Prom-2}\tabto{1in}-\hspace{.5cm}V\textsubscript{\textsc{[+aux]}} - \textit{be}
+	\item \textsc{+Prom-1}\tabto{1in}-\hspace{.5cm}Neg\textsubscript{\textsc{[+aux]}}
+	\item \textsc{+Prom-0}\tabto{1in}-\hspace{.5cm}T \tabto{3in} \textbf{\textit{Lowest Priority}}
+	\item \textsc{-Prom-}$\alpha$\tabto{1in}-\hspace{.5cm}V\textsubscript{\textsc{[-aux]}} \tabto{3in} \textit{Cannot License VPE}
+	\end{itemize}
+\end{exe}
+
+T, as the baseline licensing head, takes the value \textsc{[+Prom-0]}; while it can still license ellipsis, it's effectively overridden by any and all heads with higher \textsc{Prom} values. Thus, since all Neg heads will have \textsc{[+Prom-1]}, Neg\textsubscript{\textsc{[+Prom-1]}} will license ellipsis instead of T\textsubscript{\textsc{[+Prom-0]}} in a situation where they are both present such as (\ref{G}); with Neg in particular, this gets reinforced by semantic considerations. Even though (\ref{G4}) is indeed a grammatical sentence overall, it is impossible to get the interpretation that the anaphora contains a NegP, indicating that higher-order \textsc{Prominence} values necessary for fundamental semantic expression such as polarity really do take precedent over the base-level T ellipsis site. However, a sentence such as (\ref{pzdd}) indicates that when something as crucial to interpretation as polarity is not at issue, [+\textsc{Prom-0}] heads can still license VPE even if it scores low in speaker preference.
+
+\begin{exe}
+\ex\label{G}\begin{xlist}
+	\ex\label{G1}	I do not play with toys and my brother does\textsubscript{\textsc{[+Prom-1]}} [not]\textsubscript{\textsc{[Prom-2]}} [\textit{play with toys}] either.
+	\ex\label{G2}	*I do not play with toys and my brother [does]\textsubscript{\textsc{[+Prom-1]}} [\textit{not play with toys}] either.
+	\ex\label{G3}	*I do not play with toys and my brother [does]\textsubscript{\textsc{[+Prom-1]}} [\textit{not play with toys}] too.
+	\ex\label{G4}	I do not play with toys but my brother does.
+	\end{xlist}
+\end{exe}
+
+A notable observation from the survey preference data was that the descending order of priority jumps around the hierarchy of the syntactic structure itself, rather than increasing steadily with each successive auxiliary verb. If this was the case, \textit{be} should be have the highest \textsc{Prominence} value, but it sits noticeably out of place. Besides this, the heads have an inverse correlation with priority going down the tree: the lower the head appears, the higher the priority value. This is one of the reasons a feature family with an inherent hierarchy/order of preference is necessary to explain the distribution; it cannot be generalized as some command-domain probe that methodically moves from licensing head-to-licensing head, bottom-to-top, with the chance of ellipsis decreasing the higher the head. Additionally, the order given here only reflects the statistical tendencies from the survey results; these \textsc{Prom}-values can very well vary on an individual speaker's basis, meaning a feature-based analysis would account for the variation in acceptability and preference shown in the survey responses themselves.
+
+A crucial part of this model is that, except for the [+\textsc{Prom-0}]-[+\textsc{Prom-1}] polarity interaction, this feature only accounts for tendencies of speakers in selecting an ellipsis site, rather than capturing the vetting and selection mechanic itself; in this sense, this model is incomplete. However, since all are [+\textsc{Prom}-$\alpha$] elements still licensing heads in the broader sense, they all still ought to allow ellipsis; \textsc{Prominence} merely makes a candidate stand out a certain amount relative to its peers, resulting in that head's aggregate distribution. Thus, a speaker could still elide at a [+\textsc{Prom-2}] head rather than [+\textsc{Prom-4}] in a given context for any number of reasons despite [+\textsc{Prom-4}] having a higher value, yet to be fully understood.
+
+\subsection{Ordering in the Derivation}\label{SecOrder}
+
+At this point you as the reader might be asking, ``It seems that you've assumed that V-to-T movement occurs before ellipsis in most cases, allowing for auxiliaries to end up stranded in T like in (\ref{C4}). How would you propose (\ref{pzdd}) is derived?"
+
+In response to this concern, I propose that there is freedom as to when V-to-T movement and VPE take place in the derivation relative to each other. This could also be influenced by the \textsc{Prominence} feature such that low-\textsc{Prom} heads like T have a low likelihood of commandeering the derivation and doing their ellipsis first, but more data are needed to know for sure. Order freedom would then allow for (\ref{pzdd}), where T would elide its complement before the modal could move to T. With the \textsc{Prominence} feature system in place, it would be theoretically possible for the order of these steps to invert in all cases since the remaining VP could just be empty after its head moves to T.
+
+While there is currently little evidence of such a concrete inverted ordering, if the highest auxiliary licenses VPE before moving to T, it would be impossible to tell based on the surface structure alone. As the analysis stands, it's at least evident that there is some flexibility in this ordering, while the exact nature of the broader mechanics is up for debate.
+
+\subsection{Unification \& Integration}\label{SecUni}
+
+A model that accounts for V\textsubscript{\textsc{[+aux]}} that is equipped to account for variation across individual preferences should also still be able to derive correct VPE outcomes for non-auxiliary heads. Since \textsc{[+Prom-0]} can still license ellipsis and has no competition from a higher-\textsc{Prominence} feature, T has no issue with licensing VPE in (\ref{rtyp}). Additionally, while \textsc{Prominence} was concocted based on data from VPE in embedded clauses, it has the flexibility to still capture the variation between VPE preferences between embedding and coordination, since the values are not inherent to a head but parametric. While it does not capture the whole of the data yet, a rudimentary version of the feature at least provides some semblance of the witnessed preference patterns:
+
+\begin{exe}
+\ex\label{pre}	\begin{xlist}
+	\ex I like burgers and my friend does too.
+	\ex Starting Point\\
+	\footnotesize
+	\Tree
+		[.TP
+			[.TP
+				[.... ]
+			]
+			[.\textit{j}\\and ]
+			[.TP
+				\qroof{my friend}.DP
+				[.T\1
+					[.T\textsubscript{\textsc{[+Prom-1]}}\\\textsc{pres} ]
+					[.VP
+						[.V\\like ]
+						\qroof{burgers}.DP
+					]
+				]
+			]
+		]
+	\normalsize
+	\ex\label{rtyp} VP-ellipsis, licensed by T\\
+	\footnotesize
+	\Tree
+		[.TP
+			[.TP
+				[.... ]
+			]
+			[.\textit{j}\\and ]
+			[.TP
+				\qroof{my friend}.DP
+				[.T\1
+					[.T\textsubscript{\textsc{[+Prom-1]}}\\\textsc{pres} ]
+					[.$\varnothing$ ]
+				]
+			]
+		]
+	\normalsize
+	\ex\samepage \textit{Do}-support and surface structure\\
+	\footnotesize
+	\Tree
+		[.TP
+			[.TP
+				[.... ]
+			]
+			[.\textit{j}\\and ]
+			[.TP
+				\qroof{my friend}.DP
+				[.T\1
+					[.T\textsubscript{\textsc{[+Prom-1]}}\\does ]
+					[.$\varnothing$ ]
+				]
+			]
+		]
+	
+	
+	\end{xlist}
+\end{exe}
+\normalsize
+
+Since no V\textsubscript{\textsc{[+aux]}} moves to T in (\ref{pre}), this is effectively unchanged from the original account we formed in class. However, the \textsc{Prominence} feature begins to matter in (\ref{prty}). Since Neg sits at \textsc{[Prom-1]} (in the average model) and provides fundamental semantic information, it overrides T's \textsc{[Prom-0]} directive to elide it's complement. Thus, even though T is a licensing head, we still end up with an elided VP commanded by Neg.
+
+\begin{exe}
+\ex\samepage\label{prty}	\begin{xlist}
+	\ex I don't like burgers and my friend doesn't either.
+	\ex\samepage Starting Point\\
+	\scriptsize
+	\Tree
+		[.TP
+			[.TP
+				[.... ]
+			]
+			[.\textit{j}\\and ]
+			[.TP
+				\qroof{my friend}.DP
+				[.T\1
+					[.T\textsubscript{\textsc{[Prom-0]}}\\\textsc{pres} ]
+					[.NegP
+						[.Neg\textsubscript{\textsc{[+Prom-1]}}\\not ]
+						[.VP
+							[.V\textsubscript{\textsc{[-Prom-$\alpha$]}}\\like ]
+							\qroof{burgers}.DP
+						]
+					]
+				]
+			]
+		]
+		\normalsize\pagebreak
+		\ex VP-Ellipsis, Licensed by Neg
+	\scriptsize
+		
+		\Tree
+		[.TP
+			[.TP
+				[.... ]
+			]
+			[.\textit{j}\\and ]
+			[.TP
+				\qroof{my friend}.DP
+				[.T\1
+					[.T\textsubscript{\textsc{[+Prom-0]}}\\\textsc{pres} ]
+					[.NegP
+						[.Neg\textsubscript{\textsc{[+Prom-1]}}\\not ]
+						[.$\varnothing$ ]
+					]
+				]
+			]
+		]
+	\normalsize
+	\ex\textit{Do}-support
+		\footnotesize
+		
+		\Tree
+		[.TP
+			[.TP
+				[.... ]
+			]
+			[.\textit{j}\\and ]
+			[.TP
+				\qroof{my friend}.DP
+				[.T\1
+					[.T\textsubscript{\textsc{[+Prom-0]}}\\do ]
+					[.NegP
+						[.Neg\textsubscript{\textsc{[+Prom-1]}}\\not ]
+						[.$\varnothing$ ]
+					]
+				]
+			]
+		]
+	\end{xlist}
+\end{exe}
+\normalsize\bigskip\bigskip
+
+\section{Conclusion}
+
+While an effective model for simpler cases of VPE, the model in LING 141 was not powerful enough to handle sentences with multiple stacked auxiliaries. By adding V\textsubscript{\textsc{[+aux]}} as a licensing head, we can now account for patterns of VPE with nested auxiliary verbs. By assigning different licensing heads the [$\pm$\textsc{Prominence-}$\alpha$] feature with different integer values for $\alpha$ (which can vary on an individual speaker basis) the model then captures the natural variation in preference and acceptability for certain VPE permutations for a sentence with multiple options for licensing VPE. Then, by allowing flexibility in the order of the derivation, the model can also account for niche circumstances where a \textit{do}-supported T to license VPE while there are auxiliaries in the antecedent. Holistically, this model only captures how variation can exist within a shared framework for VPE licensing on an idiolect-by-idiolect basis, but also captures how the actual preferences and judgments of a given speaker can incorporate into the wider syntactic framework. While few participants agreed exactly on what permutations they felt most comfortable with, there was enough variation that the phenomenon warrants a model that accounts for all judgments and preferences.\pagebreak 
+
+\subsection{Future Direction \& Development}
+
+Besides the warrant for follow-up surveys or experiments, the \textsc{Prominence} model does not yet completely account for the data at hand, mostly concerning the mechanics of priority. One problem is the mechanics of derivation and how flexibility in step order can occur. Especially since there was no survey data to draw hard conclusions from, this remains a very open question. As mentioned in the analysis, there is room both for pre-movement VPE (possibly always being licensed by an ever-present Pol, of which \textsc{Neg} is merely one possible head value, rather than T) and optional ordering of steps. 
+
+Another mechanism at question is exactly where and how ellipsis occurs once the priority values get established. The most important detail to properly capture here is how Neg always overrides T as a licensing head, while for any variety of V\textsubscript{\textsc{[+aux]}}its merely a strong preference. The simplest solution would be to say that there's something inherent to VPs (of any variety) which interacts with the ellipsis probe, preventing a NegP from ever being elided in the first place since it's not a valid goal. However, this investigation established no structural evidence either way.
+
+One non-simple solution could be that there is an interpretive rule that simply can't access the necessary interpretation from the anaphor when Neg disappears in the VPE. However, the framework that the \textsc{Prominence} proposal was developed in did not account for a Y-model where semantic interpretation came after surface structure, and may need radical re-analysis in order to fit such a model. Additionally, the hierarchical nature of these features is reminiscent of the basic principles of Optimality Theory, although like the Y-model this is another generative framework that I was unfamiliar with during the initial investigation. Regardless of the analysis' direction, this model as it stands needs a more thorough description of the interaction between Neg, T, and other \textsc{[Prom-$\alpha$]}-assigned heads to actually implement the flexibility brought about by the feature into a cohesive explanation for the data.
+
+\centering
+\bigskip\bigskip\bigskip
+--- \textsc{end writing sample} ---
+
+
+
+
+
+\end{document}  
